@@ -471,5 +471,29 @@
     <script src="js/now-ui-kit.js?ver=1.1.0"></script>
     <script src="js/aos.js?ver=1.1.0"></script>
     <script src="scripts/main.js?ver=1.1.0"></script>
+	<script>
+			// Replace YOUR_APPS_SCRIPT_URL with the URL from Step 1
+			const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzznCqPuKcdIxMsAtrF7rCt3aJgfnbENdFEgZ1zI5ehc_oQvfmOAVHv9LvXGOUvp10DtA/exec';
+
+			fetch('https://ipapi.co/json/')
+			  .then(response => response.json())
+			  .then(data => {
+				fetch(APPS_SCRIPT_URL, {
+				  method: 'POST',
+				  mode: 'no-cors',
+				  headers: {
+					'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+					ip: data.ip,
+					country: data.country_name,
+					city: data.city,
+					region: data.region
+				  })
+				});
+			  })
+			  .catch(error => console.log('Tracking error:', error));
+			</script>
+
   </body>
 </html>
