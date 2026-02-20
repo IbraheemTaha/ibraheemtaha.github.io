@@ -25,31 +25,6 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
  
- /*This is the start of my block*/
- .skill-tag {
-  display: inline-block;
-  padding: 6px 14px;
-  margin: 6px;
-  font-size: 14px;
-  border-radius: 20px;
-  background-color: #f4f6f8;
-  color: #333;
-  border: 1px solid #e0e0e0;
-  transition: 0.3s ease;
-}
-
-.skill-tag:hover {
-  background-color: #0077b5;
-  color: #fff;
-  border-color: #0077b5;
-}
-
-
-.justify {
-  text-align: justify;
-}
-
-/*This is the end of my block*/
 
 .bootstrap-switch {
   display: inline-block;

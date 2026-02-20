@@ -1,0 +1,27 @@
+
+
+ /* This is to change the color of the icons when hovering the mouse on */
+ .skill-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 6px;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: #f4f6f8;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  transition: 0.3s ease;
+}
+
+.skill-tag:hover {
+  background-color: #0077b5;
+  color: #fff;
+  border-color: #0077b5;
+}
+
+
+ /* This is to align the text */
+
+.justify {
+  text-align: justify;
+}
