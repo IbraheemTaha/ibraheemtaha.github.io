@@ -51,8 +51,8 @@
         <div class="content-center">
           <div class="cc-profile-image"><a href="#"><img src="images/ibraheem.jpg" alt="Image"/></a></div>
           <div class="h2 title">Ibraheem Taha</div>
-          <p class="category text-white">AI/ML Engineer & PhD Candidate in Data Engineering</p>	
 		  
+		  <p class="category text-white"> <span class="typed" data-typed-items="AI/ML Engineer & PhD Candidate in Data Engineering"></span></p>		  
 			<!--
 			<a class="btn btn-primary" onclick="window.open('docs/Profile.pdf')" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">
 			  Download Profile
@@ -78,9 +78,15 @@
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title">About</div>
-            <p>I build scalable data + AI systems that deliver measurable impact.</p>
-            <p>AI/ML Engineer and PhD candidate in Data Engineering (Aalborg University & University of Athens), specializing in data-intensive LLM applications, RAG architectures, and production-scale deep learning.</p>
-            <p>My work blends research innovation with engineering rigor, delivering outcomes like 80× faster ML pipelines, 18× smaller vector indexes, and retrieval systems that power intelligent, context-aware applications.</p>
+				<p class="justify">
+				  I build scalable data + AI systems that deliver measurable impact.
+				</p>
+				<p class="justify">
+				  AI/ML Engineer and PhD candidate in Data Engineering (Aalborg University & University of Athens), specializing in data-intensive LLM applications, RAG architectures, and production-scale deep learning.
+				</p>
+				<p class="justify">
+				  My work blends research innovation with engineering rigor, delivering outcomes like 80× faster ML pipelines, 18× smaller vector indexes, and retrieval systems that power intelligent, context-aware applications.
+				</p>
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
@@ -565,29 +571,9 @@
     <script src="js/now-ui-kit.js?ver=1.1.0"></script>
     <script src="js/aos.js?ver=1.1.0"></script>
     <script src="scripts/main.js?ver=1.1.0"></script>
-	<script>
-			const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzznCqPuKcdIxMsAtrF7rCt3aJgfnbENdFEgZ1zI5ehc_oQvfmOAVHv9LvXGOUvp10DtA/exec';
-						
-
-			fetch('https://ipapi.co/json/')
-			  .then(response => response.json())
-			  .then(data => {
-				fetch(APPS_SCRIPT_URL, {
-				  method: 'POST',
-				  mode: 'no-cors',
-				  headers: {
-					'Content-Type': 'application/json',
-				  },
-				  body: JSON.stringify({
-					ip: data.ip,
-					country: data.country_name,
-					city: data.city,
-					region: data.region
-				  })
-				});
-			  })
-			  .catch(error => console.log('Tracking error:', error));
-			</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+	<script src="scripts/myscripts.js"></script>
 
   </body>
 </html>

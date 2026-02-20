@@ -43,6 +43,12 @@
   color: #fff;
   border-color: #0077b5;
 }
+
+
+.justify {
+  text-align: justify;
+}
+
 /*This is the end of my block*/
 
 .bootstrap-switch {
