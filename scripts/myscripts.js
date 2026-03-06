@@ -39,3 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     backDelay: 1500
   });
 });
+
+//  Automatically gets the current year to add at the end of the website
+document.getElementById("year").textContent = new Date().getFullYear();
