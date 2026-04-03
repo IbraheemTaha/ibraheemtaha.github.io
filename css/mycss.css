@@ -1,27 +1,279 @@
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COLOR PALETTE
+   Primary:    #0077B5  (brand blue)
+   Deep:       #005080  (darker shade)
+   Accent:     #00b4d8  (electric cyan — AI/data feel)
+   Navy:       #0a1628  (deep dark for footer/overlays)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
- /* This is to change the color of the icons when hovering the mouse on */
- .skill-tag {
+
+/* ── Skill tags ── */
+.skill-tag {
   display: inline-block;
   padding: 6px 14px;
   margin: 6px;
   font-size: 14px;
   border-radius: 20px;
-  background-color: #f4f6f8;
-  color: #333;
-  border: 1px solid #e0e0e0;
-  transition: 0.3s ease;
+  background-color: #f0f7fb;
+  color: #005080;
+  border: 1px solid #c2dff0;
+  transition: all 0.3s ease;
 }
 
 .skill-tag:hover {
-  background-color: #0077b5;
+  background: linear-gradient(135deg, #0077b5, #00b4d8);
   color: #fff;
-  border-color: #0077b5;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.35);
+  transform: translateY(-2px);
 }
 
 
- /* This is to align the text */
-
+/* ── Text alignment ── */
 .justify {
   text-align: justify;
+}
+
+
+/* ── Hero banner — deep navy-blue gradient overlay ── */
+.page-header:before {
+  background: linear-gradient(
+    160deg,
+    rgba(10, 22, 40, 0.78) 0%,
+    rgba(0, 80, 128, 0.55) 60%,
+    rgba(0, 180, 216, 0.25) 100%
+  ) !important;
+}
+
+/* Hero text */
+.page-header .h2.title {
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 16px rgba(0, 20, 50, 0.6);
+}
+
+.page-header .category.text-white {
+  font-size: 1.1em;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 1.5px;
+  opacity: 0.92;
+  text-shadow: 0 1px 8px rgba(0, 20, 50, 0.5);
+  color: #d0f0ff !important;
+}
+
+@media (max-width: 767px) {
+  .page-header .h2.title {
+    font-size: 2.4em;
+  }
+  .page-header .category.text-white {
+    font-size: 0.95em;
+  }
+}
+
+
+/* ── Section title accent underline ── */
+.h3.text-center.mb-3.title::after,
+.h3.mb-3.text-center.title::after {
+  content: '';
+  display: block;
+  margin: 8px auto 0;
+  width: 50px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #0077b5, #00b4d8);
+}
+
+
+/* ── Cards ── */
+.card {
+  border-left: 3px solid transparent;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 20px rgba(0, 119, 181, 0.1) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 119, 181, 0.18) !important;
+  border-left-color: #0077b5;
+}
+
+
+/* ── Experience / Education sidebar gradient ── */
+.bg-primary {
+  background: linear-gradient(160deg, #0077b5 0%, #005080 100%) !important;
+}
+
+.cc-experience-header,
+.cc-education-header {
+  border-left: 3px solid rgba(0, 180, 216, 0.5);
+}
+
+
+/* ── Buttons ── */
+.btn-primary {
+  background: linear-gradient(135deg, #0077b5 0%, #005f94 100%) !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 119, 181, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #009aeb 0%, #0077b5 100%) !important;
+  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5) !important;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 119, 181, 0.3) !important;
+}
+
+
+/* ── Alternating section backgrounds ── */
+#about    { background-color: #ffffff; }
+#skill    { background-color: #f5fafd; }
+#experience { background-color: #ffffff; }
+#education  { background-color: #f5fafd; }
+#honors   { background-color: #ffffff; }
+#interests  { background-color: #f5fafd; }
+
+
+/* ── Navbar nav links ── */
+.navbar .navbar-nav .nav-link:not(.btn) {
+  position: relative;
+  padding-bottom: 4px;
+  font-size: 0.95em;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+/* Animated underline */
+.navbar .navbar-nav .nav-link:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, #00b4d8);
+  border-radius: 2px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Hover */
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):hover,
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):focus {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.2);
+}
+
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):hover::after,
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):focus::after {
+  width: 70%;
+  left: 15%;
+}
+
+/* Click */
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):active {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 6px;
+  transform: scale(0.95);
+}
+
+/* Active section */
+.navbar .navbar-nav .nav-item.active .nav-link:not(.btn) {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px;
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link:not(.btn)::after {
+  width: 70%;
+  left: 15%;
+}
+
+/* Brand hover */
+.navbar .navbar-brand {
+  transition: opacity 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.navbar .navbar-brand:hover {
+  opacity: 0.85;
+  letter-spacing: 2px;
+}
+
+
+/* ── Footer — dark navy ── */
+.footer {
+  background-color: #0a1628 !important;
+  color: #a0b8cc;
+}
+
+.footer .h4.title {
+  color: #d0e8f5;
+}
+
+.footer .text-muted {
+  color: #7a99b0 !important;
+}
+
+.footer .text-muted a {
+  color: #00b4d8;
+}
+
+.footer .text-muted a:hover {
+  color: #fff;
+}
+
+.footer .btn-link i {
+  color: #7a99b0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer .btn-link:hover i {
+  color: #00b4d8;
+  transform: translateY(-2px);
+}
+
+
+/* ── Contact section background image ── */
+.cc-contact-information {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+/* ── Copy-to-clipboard toast ── */
+#copy-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #005080, #0077b5);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 119, 181, 0.4);
+}
+
+#copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Pointer cursor on copyable links */
+a[data-copy] {
+  cursor: pointer;
 }

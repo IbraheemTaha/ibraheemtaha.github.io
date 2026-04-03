@@ -42,3 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //  Automatically gets the current year to add at the end of the website
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Copy to clipboard on email/phone click
+(function () {
+  const toast = document.getElementById('copy-toast');
+  let toastTimeout;
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  document.querySelectorAll('a[data-copy]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const text = this.getAttribute('data-copy');
+      const label = this.getAttribute('data-copy-label') || 'Text';
+      navigator.clipboard.writeText(text).then(function () {
+        showToast(label + ' copied to clipboard!');
+      }).catch(function () {
+        showToast('Could not copy — please copy manually.');
+      });
+    });
+  });
+})();
