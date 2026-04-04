@@ -480,6 +480,9 @@ html {
   background-color: #ffffff;
 }
 
+#contact {
+  background-color: #eef6fb;
+}
 
 /* ── Navbar nav links ── */
 .navbar .navbar-nav .nav-link:not(.btn) {
