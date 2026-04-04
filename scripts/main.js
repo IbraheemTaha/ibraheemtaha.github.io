@@ -8,6 +8,13 @@ $(document).ready(function() {
   }); // initialize animate on scroll library
 });
 
+// Close mobile navbar when a nav link is clicked
+$('.navbar-nav a.smooth-scroll').on('click', function () {
+  if ($('.navbar-collapse').hasClass('show')) {
+    $('.navbar-toggler').click();
+  }
+});
+
 // Smooth scroll for links with hashes
 $('a.smooth-scroll')
 .click(function(event) {
