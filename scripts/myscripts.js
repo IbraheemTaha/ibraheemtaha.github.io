@@ -43,6 +43,51 @@ document.addEventListener('DOMContentLoaded', () => {
 //  Automatically gets the current year to add at the end of the website
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Contact form — AJAX submission with in-page feedback
+(function () {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const btn = document.getElementById('contact-submit');
+  const feedback = document.getElementById('contact-feedback');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    feedback.style.display = 'none';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (res) {
+      if (res.ok) {
+        feedback.textContent = '✓ Message sent! I\'ll get back to you soon.';
+        feedback.style.background = '#e6f9f0';
+        feedback.style.color = '#1a7a4a';
+        feedback.style.border = '1px solid #a3d9be';
+        form.reset();
+        btn.textContent = 'Send';
+        btn.disabled = false;
+      } else {
+        throw new Error();
+      }
+    })
+    .catch(function () {
+      feedback.textContent = '✗ Something went wrong. Please try again or email me directly.';
+      feedback.style.background = '#fdecea';
+      feedback.style.color = '#a02020';
+      feedback.style.border = '1px solid #f5bcbc';
+      btn.textContent = 'Send';
+      btn.disabled = false;
+    })
+    .finally(function () {
+      feedback.style.display = 'block';
+    });
+  });
+})();
+
 // Copy to clipboard on email/phone click
 (function () {
   const toast = document.getElementById('copy-toast');

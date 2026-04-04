@@ -1,4 +1,3 @@
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    COLOR PALETTE
    Primary:    #0077B5  (brand blue)
@@ -6,6 +5,104 @@
    Accent:     #00b4d8  (electric cyan — AI/data feel)
    Navy:       #0a1628  (deep dark for footer/overlays)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+/* ── Hero stats & CTA ── */
+.hero-tagline {
+  color: #fff !important;
+  font-size: 1.45em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 6px 0 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 20px;
+  backdrop-filter: blur(4px);
+  min-width: 100px;
+}
+
+.hero-stat-number {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.88em;
+  color: #fff;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-outline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.2) !important;
+  font-size: 1.15em !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  padding: 20px 90px !important;
+  line-height: 1 !important;
+  transition: all 0.25s ease;
+}
+
+.btn-hero-outline:hover,
+.btn-hero-outline:focus-visible {
+  background: rgba(0, 180, 216, 0.25) !important;
+  border-color: #00b4d8 !important;
+  box-shadow: 0 0 28px rgba(0, 180, 216, 0.5), 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+.btn-hero-outline:active {
+  transform: translateY(0);
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.3) !important;
+}
+
+@media (max-width: 767px) {
+  .hero-stats {
+    gap: 12px;
+  }
+
+  .hero-stat-item {
+    padding: 10px 14px;
+    min-width: 80px;
+  }
+
+  .hero-stat-number {
+    font-size: 1.4em;
+  }
+}
 
 
 /* ── Skill tags ── */
@@ -16,7 +113,7 @@
   font-size: 14px;
   border-radius: 20px;
   background-color: #f0f7fb;
-  color: #005080;
+  color: #111;
   border: 1px solid #c2dff0;
   transition: all 0.3s ease;
 }
@@ -30,29 +127,133 @@
 }
 
 
+/* Skill group layout */
+.skill-group {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8f2f8;
+}
+
+.skill-group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.skill-group-title {
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.skill-group-title .fa {
+  margin-right: 8px;
+  color: #0077b5;
+  font-size: 1.1em;
+}
+
+/* Projects section */
+#projects {
+  background-color: #ffffff;
+}
+
+/* ── Project contributors ── */
+.project-contributors a {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 1.05em;
+  transition: transform 0.2s ease;
+}
+
+.project-contributors a:hover {
+  transform: scale(1.15);
+}
+
+/* ── Project card buttons ── */
+#projects .btn-outline-primary {
+  color: #0077b5;
+  border: 1.5px solid #0077b5;
+  background: transparent;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  padding: 8px 20px;
+  transition: all 0.25s ease;
+  box-shadow: none;
+}
+
+#projects .btn-outline-primary:hover,
+#projects .btn-outline-primary:focus-visible {
+  background: linear-gradient(135deg, #0077b5 0%, #00b4d8 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.35);
+  transform: translateY(-2px);
+}
+
+#projects .btn-outline-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 119, 181, 0.3);
+}
+
+/* White text in project card sidebars (mirrors .cc-experience) */
+.cc-projects .cc-experience-header {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 60px;
+  padding-right: 0;
+}
+
+.project-type {
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+  text-transform: none;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+
 /* ── Text alignment ── */
 .justify {
   text-align: justify;
 }
 
 
-/* ── Hero banner — deep navy-blue gradient overlay ── */
-.page-header:before {
-  background: linear-gradient(
-    160deg,
-    rgba(10, 22, 40, 0.78) 0%,
-    rgba(0, 80, 128, 0.55) 60%,
-    rgba(0, 180, 216, 0.25) 100%
-  ) !important;
+/* ── Hero banner height — fits all added content ── */
+.page-header.page-header-small {
+  height: 75vh !important;
+  max-height: 700px !important;
 }
 
-/* Hero text */
+/* ── Hero: replace blue overlay with dark blackish overlay ── */
+.page-header {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.profile-page .page-header:before,
+.profile-page .page-header:after {
+  display: none !important;
+  background: none !important;
+}
+
+/* Hero text — all white */
 .page-header .h2.title {
   font-size: 4em;
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 12px;
-  text-shadow: 0 2px 16px rgba(0, 20, 50, 0.6);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .page-header .category.text-white {
@@ -60,52 +261,94 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 1.5px;
-  opacity: 0.92;
-  text-shadow: 0 1px 8px rgba(0, 20, 50, 0.5);
-  color: #d0f0ff !important;
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-tagline {
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 767px) {
   .page-header .h2.title {
     font-size: 2.4em;
   }
+
   .page-header .category.text-white {
     font-size: 0.95em;
   }
 }
 
 
-/* ── Section title accent underline ── */
+/* ── Section titles ── */
+.h3.text-center.mb-3.title,
+.h3.mb-3.text-center.title {
+  display: flex !important;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.65em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #0077b5 30%, #00b4d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem !important;
+}
+
+.h3.text-center.mb-3.title::before,
+.h3.mb-3.text-center.title::before,
 .h3.text-center.mb-3.title::after,
 .h3.mb-3.text-center.title::after {
   content: '';
-  display: block;
-  margin: 8px auto 0;
-  width: 50px;
-  height: 3px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #0077b5, #00b4d8);
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0077b5 40%, #00b4d8 60%, transparent);
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.h3.text-center.mb-3.title:hover::before,
+.h3.mb-3.text-center.title:hover::before,
+.h3.text-center.mb-3.title:hover::after,
+.h3.mb-3.text-center.title:hover::after {
+  opacity: 1;
 }
 
 
 /* ── Cards ── */
 .card {
-  border-left: 3px solid transparent;
   border-radius: 6px !important;
   box-shadow: 0 4px 20px rgba(0, 119, 181, 0.1) !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1px solid transparent !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0, 119, 181, 0.18) !important;
-  border-left-color: #0077b5;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 12px 36px rgba(0, 119, 181, 0.22), 0 0 0 1px rgba(0, 180, 216, 0.2) !important;
+  border-color: rgba(0, 180, 216, 0.3) !important;
 }
 
 
 /* ── Experience / Education sidebar gradient ── */
 .bg-primary {
   background: linear-gradient(160deg, #0077b5 0%, #005080 100%) !important;
+}
+
+/* ── Navbar — frosted glass (overrides bg-primary on scroll) ── */
+nav.navbar.bg-primary {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.92) 0%, rgba(0, 80, 128, 0.85) 60%, rgba(0, 180, 216, 0.5) 100%) !important;
+  backdrop-filter: blur(16px) saturate(200%);
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.35);
+  box-shadow: 0 4px 30px rgba(0, 180, 216, 0.12);
+}
+
+nav.navbar.navbar-transparent {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 100%) !important;
 }
 
 .cc-experience-header,
@@ -135,13 +378,59 @@
 }
 
 
+/* ── Offset anchor scrolling for fixed navbar ── */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* ── Section base — padding + gradient top divider ── */
+.section {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+  position: relative;
+}
+
+
+.section::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0077b5 30%, #00b4d8 70%, transparent);
+  opacity: 0.4;
+}
+
 /* ── Alternating section backgrounds ── */
-#about    { background-color: #ffffff; }
-#skill    { background-color: #f5fafd; }
-#experience { background-color: #ffffff; }
-#education  { background-color: #f5fafd; }
-#honors   { background-color: #ffffff; }
-#interests  { background-color: #f5fafd; }
+#about {
+  background-color: #ffffff;
+}
+
+#skill {
+  background-color: #eef6fb;
+}
+
+#experience {
+  background-color: #ffffff;
+}
+
+#projects {
+  background-color: #eef6fb;
+}
+
+#education {
+  background-color: #ffffff;
+}
+
+#honors {
+  background-color: #eef6fb;
+}
+
+#interests {
+  background-color: #ffffff;
+}
 
 
 /* ── Navbar nav links ── */
@@ -197,16 +486,89 @@
   left: 15%;
 }
 
-/* Brand hover */
+/* Brand hover — matches nav-link style */
 .navbar .navbar-brand {
-  transition: opacity 0.25s ease, letter-spacing 0.25s ease;
+  position: relative;
+  padding: 0.5rem 1rem 4px;
+  font-size: 0.95em;
+  transition: color 0.25s ease, background-color 0.25s ease;
 }
 
-.navbar .navbar-brand:hover {
-  opacity: 0.85;
-  letter-spacing: 2px;
+.navbar .navbar-brand::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, #00b4d8);
+  border-radius: 2px;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.2);
+}
+
+.navbar .navbar-brand:hover::after,
+.navbar .navbar-brand:focus::after {
+  width: 70%;
+  left: 15%;
+}
+
+.navbar .navbar-brand:active {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 6px;
+  transform: scale(0.95);
+}
+
+
+/* ── Hero social buttons ── */
+.hero-social-section {
+  padding-top: 30px;
+}
+
+.hero-social-btn,
+.hero-social-btn:visited,
+.hero-social-btn:active {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 2px solid rgba(255, 255, 255, 0.75) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease !important;
+}
+
+.hero-social-btn:hover,
+.hero-social-btn:focus-visible {
+  transform: translateY(-3px);
+  border-color: transparent !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.hero-linkedin:hover,
+.hero-linkedin:focus-visible {
+  background-color: #0077B5 !important;
+}
+
+.hero-github:hover,
+.hero-github:focus-visible {
+  background-color: #1a1a1a !important;
+}
+
+.hero-social-btn:hover .fa,
+.hero-social-btn:focus-visible .fa {
+  transform: scale(1.3);
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.hero-social-btn .fa {
+  transition: transform 0.2s ease;
+}
 
 /* ── Footer — dark navy ── */
 .footer {
@@ -247,6 +609,7 @@
   background-position: center center;
   background-size: cover;
 }
+
 
 
 /* ── Copy-to-clipboard toast ── */
