@@ -278,6 +278,20 @@
   .page-header .category.text-white {
     font-size: 0.95em;
   }
+
+  /* 1. Solid navbar on mobile — transparent looks broken when menu opens */
+  nav.navbar,
+  nav.navbar.navbar-transparent,
+  nav.navbar.bg-primary {
+    background: #0a1628 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 2. Hide social icons on mobile — they overlap the CTA buttons */
+  .hero-social-section {
+    display: none;
+  }
 }
 
 
