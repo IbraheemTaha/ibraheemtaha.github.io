@@ -88,6 +88,15 @@ document.getElementById("year").textContent = new Date().getFullYear();
   });
 })();
 
+// Earlier projects collapse — toggle button label
+$(function () {
+  $('#earlier-projects').on('show.bs.collapse', function () {
+    $('#earlier-projects-toggle').html('<i class="fa fa-chevron-up mr-1"></i> Hide Earlier Projects');
+  }).on('hide.bs.collapse', function () {
+    $('#earlier-projects-toggle').html('<i class="fa fa-chevron-down mr-1"></i> Show Earlier Projects (11)');
+  });
+});
+
 // Copy to clipboard on email/phone click
 (function () {
   const toast = document.getElementById('copy-toast');
