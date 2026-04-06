@@ -108,6 +108,7 @@
                 <div class="hero-cta">
                   <a class="btn btn-hero-outline btn-round btn-lg" href="#projects">View Projects</a>
                   <a class="btn btn-hero-outline btn-round btn-lg" href="#contact">Get in Touch</a>
+                  <button class="btn btn-hero-outline btn-round btn-lg" onclick="openCVModal()" aria-label="Download CV as PDF">Download CV</button>
                 </div>
 
                 <div class="hero-social-section">
@@ -1472,6 +1473,72 @@
       </p>
       <p><a href="pages/privacy-policy.html" style="font-size:0.82em; color:#7a99b0;">Privacy Policy</a></p>
     </div>
+
+  <!-- Floating CV download button -->
+  <button class="btn-cv-float" onclick="openCVModal()" aria-label="Download CV as PDF" title="Download CV as PDF">
+    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+  </button>
+
+  <!-- CV Section Picker Modal -->
+  <div class="modal fade" id="cv-modal" tabindex="-1" role="dialog" aria-labelledby="cv-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cv-modal-label"><i class="fa fa-file-pdf-o mr-2"></i>Generate CV as PDF</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="cv-picker-item mb-3" style="display:flex;align-items:center;gap:8px;font-weight:500;">
+            <input type="checkbox" id="cv-include-photo" checked>
+            <span><i class="fa fa-camera mr-1"></i> Include profile photo in header</span>
+          </label>
+          <p class="text-muted small mb-2">Choose the sections to include in your PDF:</p>
+          <div class="cv-section-picker">
+            <label class="cv-picker-item">
+              <input type="checkbox" value="profile" checked>
+              <span class="cv-picker-label"><i class="fa fa-user-o"></i> Profile</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="skills" checked>
+              <span class="cv-picker-label"><i class="fa fa-code"></i> Professional Skills</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="experience" checked>
+              <span class="cv-picker-label"><i class="fa fa-briefcase"></i> Professional Experience</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="publications" checked>
+              <span class="cv-picker-label"><i class="fa fa-book"></i> Publications</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="projects">
+              <span class="cv-picker-label"><i class="fa fa-rocket"></i> Projects</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="education" checked>
+              <span class="cv-picker-label"><i class="fa fa-graduation-cap"></i> Education</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="honors" checked>
+              <span class="cv-picker-label"><i class="fa fa-trophy"></i> Honors &amp; Awards</span>
+            </label>
+            <label class="cv-picker-item">
+              <input type="checkbox" value="interests" checked>
+              <span class="cv-picker-label"><i class="fa fa-heart-o"></i> Interests</span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="cv-generate-btn" onclick="generateCV()">
+            <i class="fa fa-download mr-1"></i> Download PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   </footer>
 
   <script src="js/core/jquery.3.2.1.min.js?ver=1.1.0"></script>
@@ -1483,6 +1550,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="scripts/myscripts.js"></script>
+  <script src="scripts/cv-generator.js?ver=13.0"></script>
 
 </body>
 

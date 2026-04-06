@@ -761,3 +761,89 @@ a[data-copy] {
   font-weight: 600;
   color: #2c3e50;
 }
+
+
+/* ── CV Generator ── */
+
+/* Floating PDF button */
+.btn-cv-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1050;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #0077b5 0%, #005080 100%);
+  color: #fff;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 18px rgba(0, 119, 181, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cv-float:hover,
+.btn-cv-float:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 119, 181, 0.55);
+  outline: none;
+}
+
+/* Section picker in modal */
+.cv-section-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.cv-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0ecf5;
+  background: #f8fbfd;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  margin: 0;
+  font-weight: 400;
+}
+
+.cv-picker-item:hover {
+  background: #e8f4fc;
+  border-color: #0077b5;
+}
+
+.cv-picker-item input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0077b5;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.cv-picker-label {
+  font-size: 0.88rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cv-picker-label .fa {
+  color: #0077b5;
+  font-size: 0.85rem;
+  width: 14px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .cv-section-picker {
+    grid-template-columns: 1fr;
+  }
+}
