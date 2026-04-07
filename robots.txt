@@ -1,0 +1,8 @@
+# robots.txt — https://www.ibraheemtaha.com
+# Allow all crawlers full access
+
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://www.ibraheemtaha.com/sitemap.xml
