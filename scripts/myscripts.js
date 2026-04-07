@@ -1,23 +1,25 @@
 // Tracker
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzznCqPuKcdIxMsAtrF7rCt3aJgfnbENdFEgZ1zI5ehc_oQvfmOAVHv9LvXGOUvp10DtA/exec';
+const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+function sendToSheet(ip, country, city, region) {
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify({ ip, country, city, region })
+  });
+}
+
 fetch('https://ipapi.co/json/')
   .then(response => response.json())
   .then(data => {
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ip: data.ip,
-        country: data.country_name,
-        city: data.city,
-        region: data.region
-      })
-    });
+    if (data.error) {
+      sendToSheet('', '', '', browserTimezone);
+    } else {
+      sendToSheet(data.ip || '', data.country_name || '', data.city || '', data.region || '');
+    }
   })
-  .catch(error => console.log('Tracking error:', error));
+  .catch(() => sendToSheet('', '', '', browserTimezone));
 
 
 
