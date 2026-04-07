@@ -1,23 +1,24 @@
 // Tracker
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzznCqPuKcdIxMsAtrF7rCt3aJgfnbENdFEgZ1zI5ehc_oQvfmOAVHv9LvXGOUvp10DtA/exec';
-fetch('https://ipapi.co/json/')
+
+function sendToSheet(ip, country, city, region) {
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify({ ip, country, city, region })
+  });
+}
+
+fetch('https://ipwho.is/')
   .then(response => response.json())
   .then(data => {
-	fetch(APPS_SCRIPT_URL, {
-	  method: 'POST',
-	  mode: 'no-cors',
-	  headers: {
-		'Content-Type': 'application/json',
-	  },
-	  body: JSON.stringify({
-		ip: data.ip,
-		country: data.country_name,
-		city: data.city,
-		region: data.region
-	  })
-	});
+    if (!data.success) {
+      sendToSheet('', '', '', '');
+    } else {
+      sendToSheet(data.ip || '', data.country || '', data.city || '', data.region || '');
+    }
   })
-.catch(error => console.log('Tracking error:', error));
+  .catch(() => sendToSheet('', '', '', ''));
  
 
 
