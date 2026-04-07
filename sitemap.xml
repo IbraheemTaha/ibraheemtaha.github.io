@@ -4,7 +4,7 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- ═══════════════════════════════════════════════════════
-       Ibraheem Taha — Personal Portfolio Sitemap
+       Ibraheem Taha - Personal Portfolio Sitemap
        Domain  : https://www.ibraheemtaha.com
        Updated : 2026-04-07
 
@@ -21,7 +21,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.ibraheemtaha.com/images/ibraheem.jpg</image:loc>
-      <image:title>Ibraheem Taha — AI/ML Engineer &amp; PhD Researcher</image:title>
+      <image:title>Ibraheem Taha - AI/ML Engineer &amp; PhD Researcher</image:title>
       <image:caption>Profile photo of Ibraheem Taha, AI/ML Engineer and Machine Learning &amp; Data Engineering PhD Researcher based in Denmark</image:caption>
     </image:image>
   </url>
