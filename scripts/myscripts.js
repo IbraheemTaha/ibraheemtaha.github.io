@@ -1,25 +1,24 @@
 // Tracker
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzznCqPuKcdIxMsAtrF7rCt3aJgfnbENdFEgZ1zI5ehc_oQvfmOAVHv9LvXGOUvp10DtA/exec';
-
-function sendToSheet(ip, country, city, region) {
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify({ ip, country, city, region })
-  });
-}
-
-fetch('https://ipwho.is/')
+fetch('https://ipapi.co/json/')
   .then(response => response.json())
   .then(data => {
-    if (!data.success) {
-      sendToSheet('', '', '', '');
-    } else {
-      sendToSheet(data.ip || '', data.country || '', data.city || '', data.region || '');
-    }
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ip: data.ip,
+        country: data.country_name,
+        city: data.city,
+        region: data.region
+      })
+    });
   })
-  .catch(() => sendToSheet('', '', '', ''));
- 
+  .catch(error => console.log('Tracking error:', error));
+
 
 
 // Typed text:
@@ -62,30 +61,30 @@ document.getElementById("year").textContent = new Date().getFullYear();
       body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     })
-    .then(function (res) {
-      if (res.ok) {
-        feedback.textContent = '✓ Message sent! I\'ll get back to you soon.';
-        feedback.style.background = '#e6f9f0';
-        feedback.style.color = '#1a7a4a';
-        feedback.style.border = '1px solid #a3d9be';
-        form.reset();
+      .then(function (res) {
+        if (res.ok) {
+          feedback.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          feedback.style.background = '#e6f9f0';
+          feedback.style.color = '#1a7a4a';
+          feedback.style.border = '1px solid #a3d9be';
+          form.reset();
+          btn.textContent = 'Send';
+          btn.disabled = false;
+        } else {
+          throw new Error();
+        }
+      })
+      .catch(function () {
+        feedback.textContent = '✗ Something went wrong. Please try again or email me directly.';
+        feedback.style.background = '#fdecea';
+        feedback.style.color = '#a02020';
+        feedback.style.border = '1px solid #f5bcbc';
         btn.textContent = 'Send';
         btn.disabled = false;
-      } else {
-        throw new Error();
-      }
-    })
-    .catch(function () {
-      feedback.textContent = '✗ Something went wrong. Please try again or email me directly.';
-      feedback.style.background = '#fdecea';
-      feedback.style.color = '#a02020';
-      feedback.style.border = '1px solid #f5bcbc';
-      btn.textContent = 'Send';
-      btn.disabled = false;
-    })
-    .finally(function () {
-      feedback.style.display = 'block';
-    });
+      })
+      .finally(function () {
+        feedback.style.display = 'block';
+      });
   });
 })();
 
