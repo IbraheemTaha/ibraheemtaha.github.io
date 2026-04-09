@@ -626,6 +626,86 @@ html {
   transition: transform 0.2s ease;
 }
 
+/* Compact desktop hero: keep the portrait below the nav and socials above the fold edge. */
+@media (min-width: 768px) {
+  .page-header.page-header-small {
+    height: 86vh !important;
+    min-height: 670px;
+    max-height: 780px !important;
+  }
+
+  .page-header .container>.content-center {
+    top: calc(50% + 38px);
+  }
+
+  .cc-profile-image {
+    margin-bottom: 8px;
+  }
+
+  .cc-profile-image img,
+  .cc-profile-image a:before {
+    height: 162px;
+    width: 162px;
+  }
+
+  .cc-profile-image img,
+  .cc-profile-image a:before {
+    border-width: 10px;
+  }
+
+  .page-header .h2.title {
+    font-size: 3.45em;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    line-height: 1.08;
+  }
+
+  .page-header .category.text-white {
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+
+  .hero-tagline {
+    font-size: 1.18em;
+    margin: 2px 0 14px;
+  }
+
+  .hero-stats {
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .hero-stat-item {
+    min-width: 104px;
+    padding: 10px 18px;
+  }
+
+  .hero-stat-number {
+    font-size: 1.55em;
+  }
+
+  .hero-stat-label {
+    font-size: 0.78em;
+  }
+
+  .btn-hero-outline {
+    font-size: 1em !important;
+    padding: 15px 42px !important;
+  }
+
+  .hero-social-section {
+    padding-top: 14px;
+  }
+
+  .hero-social-btn,
+  .hero-social-btn:visited,
+  .hero-social-btn:active {
+    height: 3rem !important;
+    min-width: 3rem !important;
+    width: 3rem !important;
+  }
+}
+
 /* ── Footer — dark navy ── */
 .footer {
   background-color: #0a1628 !important;
@@ -846,4 +926,101 @@ a[data-copy] {
   .cv-section-picker {
     grid-template-columns: 1fr;
   }
+}
+
+/* Typography system: Open Sans for reading, Montserrat for identity and controls. */
+body {
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+p,
+li,
+td,
+th,
+input,
+select,
+textarea,
+.card-description,
+.description,
+.privacy-container p,
+.privacy-container li {
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+p,
+.card-body li,
+.privacy-container p,
+.privacy-container li {
+  line-height: 1.72;
+}
+
+.card-body p,
+.card-body li,
+.award-note,
+.privacy-container p,
+.privacy-container li {
+  color: #343a40;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.title,
+.category,
+.navbar,
+.btn,
+button,
+label,
+.skill-tag,
+.skill-group-title,
+.hero-tagline,
+.hero-stat-number,
+.hero-stat-label,
+.award-pill,
+.interest-label,
+#copy-toast,
+.cv-picker-label {
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.category,
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link:not(.btn),
+.btn,
+.skill-group-title,
+.hero-tagline,
+.hero-stat-label,
+.page-header .h2.title,
+.page-header .category.text-white,
+.h3.text-center.mb-3.title,
+.h3.mb-3.text-center.title,
+.privacy-container h1,
+.privacy-container h2 {
+  letter-spacing: 0 !important;
+}
+
+.card-body > p:last-child,
+.card-body > ul:last-child,
+.card-body > ol:last-child {
+  margin-bottom: 0;
 }
