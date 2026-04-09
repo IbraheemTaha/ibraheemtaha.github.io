@@ -10,16 +10,18 @@ function sendToSheet(ip, country, city, region) {
   });
 }
 
-fetch('https://ipapi.co/json/')
-  .then(response => response.json())
-  .then(data => {
-    if (data.error) {
-      sendToSheet('', '', '', browserTimezone);
-    } else {
-      sendToSheet(data.ip || '', data.country_name || '', data.city || '', data.region || '');
-    }
-  })
-  .catch(() => sendToSheet('', '', '', browserTimezone));
+if (!navigator.webdriver) {
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        sendToSheet('', '', '', browserTimezone);
+      } else {
+        sendToSheet(data.ip || '', data.country_name || '', data.city || '', data.region || '');
+      }
+    })
+    .catch(() => sendToSheet('', '', '', browserTimezone));
+}
 
 
 
