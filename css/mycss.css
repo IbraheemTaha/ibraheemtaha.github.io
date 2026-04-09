@@ -9,12 +9,12 @@
 
 /* ── Hero stats & CTA ── */
 .page-header .page-header-image.hero-bg {
-  background-image: url("../images/cc-bg-1-1280.jpg");
+  background-image: url("../images/cc-bg-1-1280.webp");
 }
 
 @media (min-width: 992px) {
   .page-header .page-header-image.hero-bg {
-    background-image: url("../images/cc-bg-1-1920.jpg");
+    background-image: url("../images/cc-bg-1-1920.webp");
   }
 }
 

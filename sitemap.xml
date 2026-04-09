@@ -6,7 +6,7 @@
   <!-- ═══════════════════════════════════════════════════════
        Ibraheem Taha - Personal Portfolio Sitemap
        Domain  : https://www.ibraheemtaha.com
-       Updated : 2026-04-07
+       Updated : 2026-04-09
 
        NOTE: Fragment (#section) URLs are not supported by the
        sitemap spec and are silently ignored by Google.
@@ -16,7 +16,7 @@
   <!-- ── Homepage ── priority 1.0 -->
   <url>
     <loc>https://www.ibraheemtaha.com/</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -29,7 +29,7 @@
   <!-- ── Privacy Policy ── priority 0.3 -->
   <url>
     <loc>https://www.ibraheemtaha.com/pages/privacy-policy.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

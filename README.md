@@ -14,6 +14,9 @@ Personal portfolio website for Ibraheem Taha — AI/ML Engineer & PhD Researcher
 ├── sitemap.xml                 # XML sitemap for search engine indexing
 ├── robots.txt                  # Crawler directives + sitemap pointer
 ├── CNAME                       # Custom domain: www.ibraheemtaha.com
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml    # GitHub Pages deployment workflow
 ├── pages/
 │   └── privacy-policy.html     # Privacy policy
 ├── css/
@@ -31,10 +34,14 @@ Personal portfolio website for Ibraheem Taha — AI/ML Engineer & PhD Researcher
 │   ├── aos.js                  # Scroll animations
 │   └── now-ui-kit.js           # Theme JS
 └── images/
-    ├── ibraheem.jpg            # Profile photo (1600×1600)
+    ├── ibraheem.jpg            # High-resolution portrait for social sharing + PDF CV
+    ├── ibraheem-profile-320.jpg # Optimized hero portrait
+    ├── ibraheem-profile-640.jpg # Retina/high-DPI hero portrait
     ├── icon.jpg                # Favicon
-    ├── cc-bg-1.jpg             # Hero background
-    └── staticmap.png           # Contact section map
+    ├── cc-bg-1-1280.webp       # Mobile/tablet hero background
+    ├── cc-bg-1-1920.webp       # Desktop hero background
+    ├── cc-bg-1.webp            # Optimized hero background source/backup
+    └── staticmap-1200.webp     # Lazy-loaded contact section map
 ```
 
 ## Tech Stack
@@ -68,6 +75,8 @@ Personal portfolio website for Ibraheem Taha — AI/ML Engineer & PhD Researcher
 - Smooth-scroll navigation with fixed frosted-glass navbar
 - Sidebar navigation at high zoom levels (fully opaque, branded)
 - Hero section with animated typed text and stats
+- Optimized responsive hero images and lazy-loaded contact map
+- Montserrat + Open Sans typography system
 - Collapsible "Earlier Projects" section (Bootstrap collapse)
 - **CV PDF Generator** — floating button opens a modal where the user selects which sections to include (Profile, Skills, Experience, Publications, Projects, Education, Honors & Awards, Interests), optionally includes a profile photo, and downloads a formatted PDF — all client-side via pdfmake (no server required)
 - Copy-to-clipboard for email and phone in the contact section
@@ -95,6 +104,19 @@ python -m http.server 8000
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) (npx serve) or [http://localhost:8000](http://localhost:8000).
+
+## Deployment
+
+This site deploys through GitHub Actions in `.github/workflows/deploy-pages.yml`.
+
+The workflow:
+
+- runs automatically after every push to `main`
+- can be started manually from the GitHub Actions tab
+- deploys the static site to GitHub Pages
+- keeps the custom domain from `CNAME`
+
+One-time GitHub setting: in **Settings -> Pages -> Build and deployment**, set **Source** to **GitHub Actions**.
 
 ## License
 
