@@ -10,7 +10,7 @@ function sendToSheet(ip, country, city, region) {
   });
 }
 
-if (!navigator.webdriver) {
+function runTracker() {
   fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
@@ -21,6 +21,16 @@ if (!navigator.webdriver) {
       }
     })
     .catch(() => sendToSheet('', '', '', browserTimezone));
+}
+
+if (!navigator.webdriver) {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(runTracker, { timeout: 3000 });
+  } else {
+    window.addEventListener('load', function () {
+      setTimeout(runTracker, 1500);
+    });
+  }
 }
 
 
