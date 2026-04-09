@@ -282,18 +282,21 @@
     var side = Math.min(sw, sh);
     var sx   = Math.round((sw - side) / 2); // center-crop X
     var sy   = Math.round((sh - side) / 2); // center-crop Y
-    // Keep native resolution — no downscale — lossless PNG so pdfmake gets full quality
+    var outputSide = Math.min(640, side);
+    // The PDF photo is small; 640px keeps it crisp without embedding a huge PNG.
     var canvas = document.createElement('canvas');
-    canvas.width  = side;
-    canvas.height = side;
-    canvas.getContext('2d').drawImage(imgEl, sx, sy, side, side, 0, 0, side, side);
-    return canvas.toDataURL('image/png');
+    canvas.width  = outputSide;
+    canvas.height = outputSide;
+    canvas.getContext('2d').drawImage(imgEl, sx, sy, side, side, 0, 0, outputSide, outputSide);
+    return canvas.toDataURL('image/jpeg', 0.9);
   }
 
   function imgToBase64(src, callback) {
-    // Method 1: draw the already-loaded DOM image to canvas (same-origin, no CORS needed)
+    // Method 1: use the DOM image only if it is the same file requested for the CV.
     var domImg = document.querySelector('.cc-profile-image img');
-    if (domImg && domImg.complete && domImg.naturalWidth > 0) {
+    var domSrc = domImg ? new URL(domImg.currentSrc || domImg.src, window.location.href).pathname : '';
+    var requestedSrc = new URL(src, window.location.href).pathname;
+    if (domImg && domImg.complete && domImg.naturalWidth > 0 && domSrc === requestedSrc) {
       try {
         callback(squareBase64(domImg));
         return;
@@ -331,8 +334,14 @@
       headerBlock = {
         columns: [
           { stack: textStack, width: '*' },
-          { image: photoBase64, width: PHOTO_W, height: PHOTO_W, margin: [6, 0, 0, 0] }
+          {
+            width: PHOTO_W,
+            image: photoBase64,
+            fit: [PHOTO_W, PHOTO_W],
+            alignment: 'right'
+          }
         ],
+        columnGap: 10,
         margin: [0, 0, 0, 5]
       };
     } else {

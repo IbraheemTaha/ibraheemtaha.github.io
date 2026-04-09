@@ -42,6 +42,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Lazy-load below-the-fold background images.
+document.addEventListener('DOMContentLoaded', () => {
+  const lazyBackgrounds = document.querySelectorAll('[data-bg]');
+  if (!lazyBackgrounds.length) return;
+
+  const loadBackground = (element) => {
+    element.style.backgroundImage = `url("${element.dataset.bg}")`;
+    element.removeAttribute('data-bg');
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    lazyBackgrounds.forEach(loadBackground);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      loadBackground(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '400px 0px' });
+
+  lazyBackgrounds.forEach((element) => observer.observe(element));
+});
+
 //  Automatically gets the current year to add at the end of the website
 document.getElementById("year").textContent = new Date().getFullYear();
 
