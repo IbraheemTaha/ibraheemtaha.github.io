@@ -116,12 +116,35 @@ document.getElementById("year").textContent = new Date().getFullYear();
   });
 })();
 
-// Earlier projects collapse — toggle button label
+// Earlier projects collapse - archive launcher state
 $(function () {
-  $('#earlier-projects').on('show.bs.collapse', function () {
-    $('#earlier-projects-toggle').html('<i class="fa fa-chevron-up mr-1"></i> Hide Earlier Projects');
+  const $archive = $('#earlier-projects');
+  const $toggle = $('#earlier-projects-toggle');
+  const $cta = $('#project-archive-cta');
+
+  if (!$archive.length || !$toggle.length) return;
+
+  const closedArchiveHint = 'ML · 3D Graphics · Robotics · Embedded Systems · Security';
+  const openArchiveHint = 'ML · 3D Graphics · Robotics · Embedded Systems · Security';
+  const $kicker = $toggle.find('.project-archive-kicker');
+  const $label = $toggle.find('.project-archive-label');
+  const $hint = $toggle.find('.project-archive-hint');
+
+  function setArchiveToggleState(isOpen) {
+    $cta.toggleClass('is-open', isOpen);
+    $toggle.attr('aria-label', isOpen ? 'Close earlier projects archive' : 'Open earlier projects archive');
+    $kicker.text(isOpen ? 'Archive open' : 'Earlier builds');
+    $label.text(isOpen ? 'Close the project archive' : 'Open the project archive');
+    $hint.text(isOpen ? openArchiveHint : closedArchiveHint);
+  }
+
+  $archive.on('show.bs.collapse', function () {
+    setArchiveToggleState(true);
+  }).on('shown.bs.collapse', function () {
+    this.scrollTop = 0;
+    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }).on('hide.bs.collapse', function () {
-    $('#earlier-projects-toggle').html('<i class="fa fa-chevron-down mr-1"></i> Show Earlier Projects (11)');
+    setArchiveToggleState(false);
   });
 });
 
