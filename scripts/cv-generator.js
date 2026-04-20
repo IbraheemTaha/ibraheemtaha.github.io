@@ -47,11 +47,11 @@
 
   // ── Design constants ─────────────────────────────────────────────────────────
 
-  var BLUE  = '#0077b5';
-  var DARK  = '#0a1628';
-  var INK   = '#1a1a1a';
+  var BLUE = '#0077b5';
+  var DARK = '#0a1628';
+  var INK = '#1a1a1a';
   var MUTED = '#555555';
-  var DIM   = '#777777';
+  var DIM = '#777777';
 
   // FIX #2: fixed date-column width → all entry titles wrap at the SAME point
   var DATE_COL_W = 148;  // wide enough for "October 2018 - September 2020"
@@ -88,8 +88,10 @@
       stack.push({
         columns: [
           { text: titleText || '', bold: true, fontSize: 10.5, color: INK, width: '*' },
-          { text: periodText, fontSize: 9, color: DIM, width: DATE_COL_W,
-            alignment: 'right', margin: [0, 1, 0, 0] }
+          {
+            text: periodText, fontSize: 9, color: DIM, width: DATE_COL_W,
+            alignment: 'right', margin: [0, 1, 0, 0]
+          }
         ],
         margin: [0, 0, 0, 1]
       });
@@ -125,7 +127,7 @@
   var builders = {
 
     profile: function () {
-      var paras   = document.querySelectorAll('#about .card-body p.justify');
+      var paras = document.querySelectorAll('#about .card-body p.justify');
       var content = sectionHeader('Profile');
       paras.forEach(function (p) {
         content.push({
@@ -137,8 +139,8 @@
     },
 
     contact: function () {
-      var rows    = document.querySelectorAll('#about .row.mt-3');
-      var body    = [];
+      var rows = document.querySelectorAll('#about .row.mt-3');
+      var body = [];
       rows.forEach(function (row) {
         var label = row.querySelector('strong');
         var value = row.querySelector('.col-sm-8');
@@ -160,11 +162,11 @@
     },
 
     skills: function () {
-      var groups  = document.querySelectorAll('#skill .skill-group');
+      var groups = document.querySelectorAll('#skill .skill-group');
       var content = sectionHeader('Professional Skills');
       groups.forEach(function (group) {
         var title = group.querySelector('.skill-group-title');
-        var tags  = group.querySelectorAll('.skill-tag');
+        var tags = group.querySelectorAll('.skill-tag');
         if (!title) return;
         var tagLine = Array.from(tags).map(function (t) {
           return t.textContent.trim();
@@ -181,13 +183,13 @@
     },
 
     experience: function () {
-      var cards   = document.querySelectorAll('#experience .card');
+      var cards = document.querySelectorAll('#experience .card');
       var content = sectionHeader('Professional Experience');
       cards.forEach(function (card) {
-        var period  = txt(card.querySelector('.cc-experience-header p'));
-        var org     = txt(card.querySelector('.cc-experience-header .h5'));
-        var role    = txt(card.querySelector('.col-md-9 .h5 strong'));
-        var body    = card.querySelector('.col-md-9 .card-body');
+        var period = txt(card.querySelector('.cc-experience-header p'));
+        var org = txt(card.querySelector('.cc-experience-header .h5'));
+        var role = txt(card.querySelector('.col-md-9 .h5 strong'));
+        var body = card.querySelector('.col-md-9 .card-body');
         if (!role) return;
         var bullets = topLiTexts(body ? body.querySelector('ul') : null);
         content.push(makeEntry(role, period, [org], bullets));
@@ -198,7 +200,7 @@
     publications: function () {
       var firstCard = document.querySelector('#experience .card');
       if (!firstCard) return [];
-      var nestedUl  = firstCard.querySelector('ul ul');
+      var nestedUl = firstCard.querySelector('ul ul');
       if (!nestedUl) return [];
       var items = Array.from(nestedUl.querySelectorAll('li'))
         .map(function (li) { return li.textContent.trim().replace(/\s+/g, ' '); })
@@ -212,20 +214,20 @@
     },
 
     projects: function () {
-      var cards   = document.querySelectorAll('#projects .project-card');
+      var cards = document.querySelectorAll('#projects .project-card');
       var content = sectionHeader('Selected Projects');
       cards.forEach(function (card) {
         var collapse = card.closest('#earlier-projects');
         if (collapse && !collapse.classList.contains('show')) return;
-        var period     = txt(card.querySelector('.cc-experience-header p'));
-        var org        = txt(card.querySelector('.cc-experience-header .h5'));
-        var title      = txt(card.querySelector('.col-md-9 .h5 strong'));
+        var period = txt(card.querySelector('.cc-experience-header p'));
+        var org = txt(card.querySelector('.cc-experience-header .h5'));
+        var title = txt(card.querySelector('.col-md-9 .h5 strong'));
         var highlights = Array.from(card.querySelectorAll('.project-highlights li'))
-                           .map(function (li) {
-                             return li.textContent.trim().replace(/\s+/g, ' ');
-                           });
+          .map(function (li) {
+            return li.textContent.trim().replace(/\s+/g, ' ');
+          });
         var tags = Array.from(card.querySelectorAll('.project-tags .skill-tag'))
-                     .map(function (t) { return t.textContent.trim(); });
+          .map(function (t) { return t.textContent.trim(); });
         if (!title) return;
         content.push(makeEntry(title, period, [org], highlights, tags));
       });
@@ -233,12 +235,12 @@
     },
 
     education: function () {
-      var cards   = document.querySelectorAll('#education .card');
+      var cards = document.querySelectorAll('#education .card');
       var content = sectionHeader('Education');
       cards.forEach(function (card) {
-        var period      = txt(card.querySelector('.cc-education-header p, .cc-experience-header p'));
-        var degree      = txt(card.querySelector('.cc-education-header .h5, .cc-experience-header .h5'));
-        var field       = txt(card.querySelector('.col-md-9 .h5 strong'));
+        var period = txt(card.querySelector('.cc-education-header p, .cc-experience-header p'));
+        var degree = txt(card.querySelector('.cc-education-header .h5, .cc-experience-header .h5'));
+        var field = txt(card.querySelector('.col-md-9 .h5 strong'));
         var institution = txt(card.querySelector('.col-md-9 .category'));
         if (!field) return;
         content.push(makeEntry(field, period, [degree, institution]));
@@ -258,13 +260,13 @@
     },
 
     honors: function () {
-      var card  = document.querySelector('#honors .card-body');
+      var card = document.querySelector('#honors .card-body');
       if (!card) return [];
       var items = Array.from(card.querySelectorAll('li'))
-                    .map(function (li) {
-                      return li.textContent.trim().replace(/\s+/g, ' ');
-                    })
-                    .filter(Boolean);
+        .map(function (li) {
+          return li.textContent.trim().replace(/\s+/g, ' ');
+        })
+        .filter(Boolean);
       if (!items.length) return [];
       var content = sectionHeader('Honors & Awards');
       content.push({
@@ -277,15 +279,15 @@
   // ── Image helper ─────────────────────────────────────────────────────────────
 
   function squareBase64(imgEl) {
-    var sw   = imgEl.naturalWidth;
-    var sh   = imgEl.naturalHeight;
+    var sw = imgEl.naturalWidth;
+    var sh = imgEl.naturalHeight;
     var side = Math.min(sw, sh);
-    var sx   = Math.round((sw - side) / 2); // center-crop X
-    var sy   = Math.round((sh - side) / 2); // center-crop Y
+    var sx = Math.round((sw - side) / 2); // center-crop X
+    var sy = Math.round((sh - side) / 2); // center-crop Y
     var outputSide = Math.min(640, side);
     // The PDF photo is small; 640px keeps it crisp without embedding a huge PNG.
     var canvas = document.createElement('canvas');
-    canvas.width  = outputSide;
+    canvas.width = outputSide;
     canvas.height = outputSide;
     canvas.getContext('2d').drawImage(imgEl, sx, sy, side, side, 0, 0, outputSide, outputSide);
     return canvas.toDataURL('image/jpeg', 0.9);
@@ -317,16 +319,20 @@
   // ── Assemble document definition ─────────────────────────────────────────────
 
   function buildDocDef(selected, photoBase64) {
-    var PHOTO_W    = 58;   // pt — photo column width
-    var titleSize  = photoBase64 ? 9.5  : 10.5;
-    var contactSize= photoBase64 ? 7.5  : 8.5;
+    var PHOTO_W = 58;   // pt — photo column width
+    var titleSize = photoBase64 ? 9.5 : 10.5;
+    var contactSize = photoBase64 ? 7.5 : 8.5;
 
     var textStack = [
       { text: 'Ibraheem Taha', fontSize: 22, bold: true, color: DARK, margin: [0, 0, 0, 2] },
-      { text: 'AI/ML Engineer  |  Machine Learning & Data Engineering PhD Researcher  |  Building Scalable AI Systems',
-        fontSize: titleSize, color: BLUE, lineHeight: 1, margin: [0, 0, 0, 3] },
-      { text: 'ibraheemtaha@yahoo.com  |  +45 52701019  |  linkedin.com/in/ibraheemtaha  |  github.com/IbraheemTaha  |  www.ibraheemtaha.com',
-        fontSize: contactSize, color: '#555', lineHeight: 1, margin: [0, 0, 0, 0] }
+      {
+        text: 'AI/ML Engineer  |  Machine Learning & Data Engineering PhD Researcher  |  Building Scalable AI Systems',
+        fontSize: titleSize, color: BLUE, lineHeight: 1, margin: [0, 0, 0, 3]
+      },
+      {
+        text: 'me@ibraheemtaha.com  |  +45 52701019  |  linkedin.com/in/ibraheemtaha  |  github.com/IbraheemTaha  |  www.ibraheemtaha.com',
+        fontSize: contactSize, color: '#555', lineHeight: 1, margin: [0, 0, 0, 0]
+      }
     ];
 
     var headerBlock;
@@ -367,9 +373,9 @@
     });
 
     return {
-      pageSize:    'A4',
+      pageSize: 'A4',
       pageMargins: [40, 40, 40, 35],
-      content:     content,
+      content: content,
       defaultStyle: { font: 'Roboto', fontSize: 10, lineHeight: 1.2, color: INK },
       footer: function (currentPage, pageCount) {
         return {
@@ -383,7 +389,7 @@
   // ── Generate & auto-download ──────────────────────────────────────────────────
 
   window.generateCV = function () {
-    var checked  = document.querySelectorAll('#cv-modal input[type=checkbox]:checked');
+    var checked = document.querySelectorAll('#cv-modal input[type=checkbox]:checked');
     var selected = Array.from(checked)
       .map(function (cb) { return cb.value; })
       .filter(function (v) { return v !== 'photo'; });
@@ -423,7 +429,7 @@
   };
 
   window.openCVModal = function () {
-    ensurePdfMake(function () {}); // pre-load silently while modal opens
+    ensurePdfMake(function () { }); // pre-load silently while modal opens
     $('#cv-modal').modal('show');
   };
 

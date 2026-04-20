@@ -190,34 +190,46 @@
 }
 
 .about-info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
   margin-top: 18px;
+  flex-wrap: wrap;
 }
 
 .about-info-item {
-  min-width: 0;
+  flex: 1;
+  min-width: 160px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 14px 16px;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 18px 20px;
   border: 1px solid #e0ecf5;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #f8fbfd;
+}
+
+.about-info-icon {
+  font-size: 1.25rem;
+  color: #0077b5;
+  margin-bottom: 2px;
 }
 
 .about-info-item strong {
   color: #005080;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
 }
 
 .about-info-item a,
 .about-info-item span {
-  min-width: 0;
   color: #2c3e50;
   overflow-wrap: anywhere;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .about-profile-body {
@@ -226,7 +238,7 @@
 
 @media (max-width: 767px) {
   .about-info-grid {
-    grid-template-columns: 1fr;
+    flex-wrap: wrap;
   }
 }
 
@@ -1455,8 +1467,8 @@ h6,
   letter-spacing: 0 !important;
 }
 
-.card-body > p:last-child,
-.card-body > ul:last-child,
-.card-body > ol:last-child {
+.card-body>p:last-child,
+.card-body>ul:last-child,
+.card-body>ol:last-child {
   margin-bottom: 0;
 }
