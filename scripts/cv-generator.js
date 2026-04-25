@@ -251,11 +251,19 @@
     interests: function () {
       var card = document.querySelector('#interests .card-body');
       if (!card) return [];
-      var items = card.querySelectorAll('.interest-label');
-      if (!items.length) return [];
       var content = sectionHeader('Interests');
-      var labels = Array.from(items).map(function (el) { return el.textContent.trim(); });
-      content.push({ text: labels.join('  \xB7  '), fontSize: 10, color: INK });
+
+      // Previous dynamic labels-based version kept here for reference.
+      // var items = card.querySelectorAll('.interest-label');
+      // if (!items.length) return [];
+      // var labels = Array.from(items).map(function (el) { return el.textContent.trim(); });
+      // content.push({ text: labels.join('  \xB7  '), fontSize: 10, color: INK });
+
+      content.push({
+        text: 'Outside my research and technical work, I enjoy building AI projects, exploring emerging technologies, reading, joining tech meetups and community events, and keeping an active routine through outdoor running.',
+        fontSize: 10,
+        color: INK
+      });
       return content;
     },
 
